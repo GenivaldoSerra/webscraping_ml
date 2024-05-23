@@ -1,1 +1,1 @@
-# webscraping_ml
+# Web Scraping na página do Mercado Livre(Ofertas do Dia!)
