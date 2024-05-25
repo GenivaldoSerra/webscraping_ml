@@ -10,15 +10,15 @@ df = pd.read_json('../data/data.jsonl', lines=True)
 pd.options.display.max_columns = None
 
 # Adicionar a coluna _source com um valor fixo
-df['_source'] = "https://lista.mercadolivre.com.br/tenis-corrida-masculino"
+df['_source'] = "https://www.mercadolivre.com.br/ofertas"
 
 # Adicionar a coluna _data_coleta com a data e hora atuais
 df['_data_coleta'] = datetime.now()
 
 # Tratar os valores nulos para colunas numéricas e de texto
-df['new_price_reais'] = df['new_price_reais'].fillna(0).astype(float)
+df['new_price_reais'] = df['new_price_reais'].fillna(0).astype(float).round(2)
 df['new_price_centavos'] = df['new_price_centavos'].fillna(0).astype(float)
-df['old_price_reais'] = df['old_price_reais'].fillna(0).astype(float)
+df['old_price_reais'] = df['old_price_reais'].fillna(0).astype(float).round(2)
 df['old_price_centavos'] = df['old_price_centavos'].fillna(0).astype(float)
 
 # Tratar os preços como floats e calcular os valores totais

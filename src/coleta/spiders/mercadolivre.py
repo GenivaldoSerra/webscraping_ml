@@ -17,8 +17,11 @@ class MercadolivreSpider(scrapy.Spider):
             old_price_reais = None
             
             if len(prices) > 1:
-                if prices[1] == "" or prices[1].isdigit() and int(prices[1]) > 0:
-                    old_price_reais = prices[1]
+                old_price = prices[1].strip()  # Remove espaços em branco nas extremidades
+                
+                # Verificar se old_price não é uma string vazia
+                if old_price:
+                    old_price_reais = old_price
             
             yield {
                 'titulo': product.css('p.promotion-item__title::text').get(),
